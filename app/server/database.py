@@ -31,7 +31,7 @@ async def add_student(student_data: dict) -> dict:
     return student_helper(new_student)
 
 # Retrive a student with mathching id
-async def retrive_student(id: str) -> dict:
+async def retrieve_student(id: str) -> dict:
     student = await student_collection.find_one({"_id": ObjectId(id)})
     if student:
         return student_helper(student)
@@ -54,5 +54,5 @@ async def update_student(id: str, data: dict):
 async def delete_student(id: str):
     student = await student_collection.find_one({"_id": ObjectId(id)})
     if student:
-        await student_collection.delete_one("_id": ObjectId(id))
+        await student_collection.delete_one({"_id": ObjectId(id)})
         return True
