@@ -6,7 +6,7 @@ class StudentShema(BaseModel):
     email: EmailStr = Field(...)
     course_of_study: str = Field(...)
     year: int = Field(..., gt=0, lt=6)
-    gpa: float = Field(..., lte=10.0)
+    gpa: float = Field(..., gt=5.0, lt=10.0)
 
     class Config:
         schema_extra = {
